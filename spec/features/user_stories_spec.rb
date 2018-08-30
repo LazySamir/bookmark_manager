@@ -1,10 +1,14 @@
 feature "bookmark list" do
   scenario "returns bookmarks" do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
+    # connection = PG.connect(dbname: 'bookmark_manager_test')
+    #
+    # connection.exec("INSERT INTO bookmarks VALUES(1, 'www.facebook.com');")
+    # connection.exec("INSERT INTO bookmarks VALUES(2, 'www.google.com');")
+    # connection.exec("INSERT INTO bookmarks VALUES(3, 'www.instagram.com');")
 
-    connection.exec("INSERT INTO bookmarks VALUES(1, 'www.facebook.com');")
-    connection.exec("INSERT INTO bookmarks VALUES(2, 'www.google.com');")
-    connection.exec("INSERT INTO bookmarks VALUES(3, 'www.instagram.com');")
+    Bookmark.add(url: "www.facebook.com")
+    Bookmark.add(url: "www.google.com")
+    Bookmark.add(url: "www.instagram.com")
 
     visit '/bookmarks'
 
